@@ -33,7 +33,7 @@ Make sure you have:
 
 ### 📥 Step 1: Get the Files
 ```cmd
-git clone <repo link>
+git clone https://github.com/victortong-git/learn-assist.git
 ```
 This downloads all the necessary files to your computer.
 
