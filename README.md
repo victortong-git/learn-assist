@@ -1,4 +1,4 @@
-# Learn Assist Plugin for NVIDIA G-Assist
+# Learn-Assist Plugin for NVIDIA G-Assist
 
 Transform your gaming PC into a powerful learning companion! This G-Assist plugin leverages context engineering to help students get better AI-powered educational support. Because your gaming PC isn't just for gaming – it's a versatile tool that can support your studies and learning journey.
 
