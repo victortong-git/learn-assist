@@ -1,0 +1,23 @@
+{
+  "manifestVersion": 1,
+  "executable": "./learn-assist-plugin.exe",
+  "persistent": true,
+  "passthrough": false,
+  "functions": [
+    {
+      "name": "get_learning_context",
+      "description": "Provides educational context from local markdown files to enhance AI responses for student learning assistance.",
+      "tags": ["education", "learning", "context", "study"],
+      "properties": {
+        "subject": {
+          "type": "string",
+          "description": "The subject prefix (e.g., 'english', 'math', 'physics', 'chemistry', 'biology') to load the corresponding markdown file."
+        },
+        "question": {
+          "type": "string",
+          "description": "The student's question that needs to be answered using the educational context."
+        }
+      }
+    }
+  ]
+}
