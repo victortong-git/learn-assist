@@ -14,20 +14,7 @@ __pycache__/
 .Python
 build/
 dist/
-*.egg-info/
-*.eggs/
-*.whl
-*.manifest
-*.spec
-*.pkg
-*.toc
-*.zip
-*.tar.gz
-*.pyz
-*.exe
-*.dll
-*.msi
-*.bat
+
 
 # Installer logs
 pip-log.txt
@@ -78,3 +65,4 @@ learn-assist-plugin.pkg
 *.zip
 *.html
 localpycs/
+examples/

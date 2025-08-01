@@ -1,6 +1,6 @@
 {
   "manifestVersion": 1,
-  "executable": "./learn-assist-plugin.exe",
+  "executable": "./learnassist-plugin.exe",
   "persistent": true,
   "passthrough": false,
   "functions": [

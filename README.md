@@ -1,4 +1,4 @@
-# Learn-Assist: A Learning Assistant Plugin for NVIDIA Project G-Assist
+# LearnAssist: A Learning Assistant Plugin for NVIDIA Project G-Assist
 Transform your gaming PC into a powerful learning companion! This G-Assist plugin leverages context engineering to help students get better AI-powered educational support. Because your gaming PC isn't just for gaming – it's a versatile tool that can support your studies and learning journey.
 
 Learn more about NVIDIA G-Assist [here](https://github.com/NVIDIA/G-Assist).
@@ -12,7 +12,7 @@ Learn more about NVIDIA G-Assist [here](https://github.com/NVIDIA/G-Assist).
 - 💡 Smart question answering using subject-specific educational context
 
 ## Open Source Project Information
-This learn-assist plugin is an **open source project** developed for the **NVIDIA G-Assist Plugins Hackathon competition**. It was built using the weather plugin example as a reference to demonstrate how gaming PCs can be transformed into powerful educational tools.
+This learnassist plugin is an **open source project** developed for the **NVIDIA G-Assist Plugins Hackathon competition**. It was built using the weather plugin example as a reference to demonstrate how gaming PCs can be transformed into powerful educational tools.
 
 The plugin uses a context engineering approach to help G-Assist's Small Language Model provide better learning results, proving that gaming hardware can effectively support students in their academic pursuits.
 
@@ -53,13 +53,13 @@ This creates the executable and prepares all necessary files for installation.
 
 ### 📦 Step 3: Install the Plugin
 1. Navigate to the `dist` folder created by the build script
-2. Copy the `learn-assist` folder to:
+2. Copy the `learnassist` folder to:
 ```cmd
 %PROGRAMDATA%\NVIDIA Corporation\nvtopps\rise\plugins
 ```
 
 💡 **Tip**: Make sure all files are copied, including:
-- The executable (`learn-assist-plugin.exe`)
+- The executable (`learnassist-plugin.exe`)
 - `manifest.json`
 - All subject markdown files (`.md` files)
 
@@ -72,45 +72,46 @@ Use the pattern: `[subject] [your question]`
 
 ### 📖 Available Subjects
 The plugin comes with pre-loaded educational content for:
-- **english** - Grammar, writing, literature
-- **math** - Algebra, geometry, calculus  
-- **physics** - Mechanics, electricity, thermodynamics
-- **chemistry** - Atomic structure, chemical reactions, organic chemistry
-- **biology** - Cell biology, genetics, ecology
+- **eng** (or english) - Grammar, writing, literature
+- **math** (or mathematics) - Algebra, geometry, calculus  
+- **phy** (or physics) - Mechanics, electricity, thermodynamics
+- **chem** (or chemistry) - Atomic structure, chemical reactions, organic chemistry
+- **bio** (or biology) - Cell biology, genetics, ecology
 
 ### 💬 Example Commands
-Try these commands with G-Assist:
+Try these commands with G-Assist using `/learnassist [subject] [question]` format:
 
 **English:**
-- "english What are past participles and how do I use them?"
-- "english Explain the difference between active and passive voice"
-- "english Help me understand different types of essays"
+- `/learnassist eng what is noun?`
+- `/learnassist eng what is adjective?`
+- `/learnassist eng how do I use verbs?`
 
 **Math:**
-- "math How do I solve quadratic equations?"
-- "math What's the pythagorean theorem and when do I use it?"
-- "math Explain derivatives in calculus"
+- `/learnassist math what is fraction?`
+- `/learnassist math how to solve algebra?`
+- `/learnassist math what is geometry?`
 
 **Physics:**
-- "physics What are Newton's three laws of motion?"
-- "physics How does electricity work in circuits?"
-- "physics Explain the concept of energy conservation"
+- `/learnassist phy what is force?`
+- `/learnassist phy what is energy?`
+- `/learnassist phy what are newton laws?`
 
 **Chemistry:**
-- "chemistry What's the difference between ionic and covalent bonds?"
-- "chemistry How do I balance chemical equations?"
-- "chemistry Explain the periodic table organization"
+- `/learnassist chem what is atom?`
+- `/learnassist chem what are elements?`
+- `/learnassist chem what is photosynthesis?`
 
 **Biology:**
-- "biology How does photosynthesis work?"
-- "biology What are the stages of mitosis?"
-- "biology Explain DNA structure and function"
+- `/learnassist bio what is cell?`
+- `/learnassist bio what is photosynthesis?`
+- `/learnassist bio what is respiration?`
 
 ### 📋 Example Response
-When you ask a question like "english What are past participles?", the plugin will:
-1. Load the English educational context from `english.md`
-2. Combine it with your specific question
-3. Provide a comprehensive, context-aware answer using the educational material
+When you ask a question like `/learnassist eng what is noun?`, the plugin will:
+1. Process your question to identify you're asking about nouns
+2. Extract relevant information from the `eng.md` educational content
+3. Return a focused answer: "**Nouns** - People, places, things, or ideas. Examples: cat, school, love, teacher, book, happiness. Types: Common (dog), Proper (London), Abstract (freedom)"
+4. G-Assist uses this focused answer to provide natural educational assistance
 
 ## 🔧 Customizing Your Learning Content
 
@@ -121,7 +122,7 @@ When you ask a question like "english What are past participles?", the plugin wi
 4. Rebuild the plugin using `build.bat`
 
 ### ✏️ Updating Existing Content
-1. Open any of the subject `.md` files (e.g., `math.md`, `physics.md`)
+1. Open any of the subject `.md` files (e.g., `math.md`, `phy.md`, `eng.md`)
 2. Add or modify content using standard markdown syntax
 3. Save the file
 4. Rebuild using `build.bat` to apply changes
@@ -148,7 +149,7 @@ Content here...
 ### 📊 Logging
 The plugin logs all activity to:
 ```
-%USERPROFILE%\learn-assist-plugin.log
+%USERPROFILE%\learnassist-plugin.log
 ```
 Check this file for detailed error messages and debugging information.
 
@@ -167,7 +168,7 @@ This contains instructions for manually testing your plugin functionality.
 ## 👨‍💻 Developer Documentation
 
 ### 🏗️ Plugin Architecture
-The learn-assist plugin is built as a Python-based G-Assist plugin that uses local markdown files as a knowledge base. It follows a context engineering approach where educational content is dynamically loaded and combined with user questions to enhance AI responses.
+The learnassist plugin is built as a Python-based G-Assist plugin that processes educational questions and returns focused answers. Similar to how weather plugins process weather data or stock plugins process market data, learnassist processes educational content from local markdown files to provide targeted learning assistance.
 
 ### 🔧 Core Components
 
@@ -176,11 +177,11 @@ The learn-assist plugin is built as a Python-based G-Assist plugin that uses loc
 - `write_response()`: Sends JSON-formatted responses back to G-Assist
 - Uses Windows API for secure pipe communication
 
-#### Educational Context Processing
-- `get_learning_context()`: Main function that processes learning requests
-- Loads subject-specific markdown content
-- Combines educational context with student questions
-- Returns formatted prompts for enhanced AI responses
+#### Educational Question Processing
+- `get_learning_context()`: Main function that processes educational questions
+- `process_educational_question()`: Analyzes student questions and extracts relevant answers
+- `extract_topic_info()`: Extracts focused information from educational content
+- Returns direct educational answers like other G-Assist plugins
 
 ### 📋 Available Commands
 
@@ -195,19 +196,19 @@ Gracefully terminates the plugin.
 - Returns: `{"success": true, "message": "Learn Assist Plugin shutdown"}`
 
 #### `get_learning_context`
-Retrieves educational context for a specified subject and question.
+Processes educational questions and returns focused answers from educational content.
 - Parameters:
   ```json
   {
-    "subject": "string",  // Required: Subject prefix (english, math, etc.)
-    "question": "string"  // Required: Student's question
+    "subject": "string",  // Required: Subject (eng/english, math, phy/physics, chem/chemistry, bio/biology)
+    "question": "string"  // Required: Student's question (e.g., "what is noun?")
   }
   ```
 - Returns:
   ```json
   {
     "success": true,
-    "message": "Formatted educational prompt with context"
+    "message": "**Nouns** - People, places, things, or ideas. Examples: cat, school, love..."
   }
   ```
 
@@ -219,8 +220,8 @@ Input Format:
         {
             "func": "get_learning_context",
             "params": {
-                "subject": "math",
-                "question": "How do I solve quadratic equations?"
+                "subject": "eng",
+                "question": "what is noun?"
             }
         }
     ]
@@ -231,7 +232,7 @@ Output Format:
 ```json
 {
     "success": true,
-    "message": "Using the following educational context for math:\n\n[math.md content]\n\nPlease answer this student question: How do I solve quadratic equations?\n\nProvide a clear, educational response that references the context material when relevant."
+    "message": "**Nouns**\n- People, places, things, or ideas\n- Examples: cat, school, love, teacher, book, happiness\n- Types: Common (dog), Proper (London), Abstract (freedom)"
 }
 ```
 
