@@ -214,13 +214,6 @@ Check this file for detailed error messages and debugging information.
 - **Plugin not responding**: Verify the plugin is properly installed in the G-Assist plugins directory
 - **Available subjects reminder**: Plugin will respond with "Available subjects: eng/english, math, phy/physics, chem/chemistry, bio/biology" when subject is not found
 
-### 🧪 Testing Your Setup
-Use the provided test file:
-```cmd
-how_to_test.md
-```
-This contains instructions for manually testing your plugin functionality.
-
 ## 👨‍💻 Developer Documentation
 
 ### 🏗️ Plugin Architecture
