@@ -45,9 +45,7 @@ This is an **open source project** and we welcome your contributions for:
 
 ## 🎮 Why Use Your Gaming PC for Learning?
 Your gaming PC has powerful hardware that's perfect for AI-assisted learning:
-- **High-performance CPU**: Perfect for running AI models locally
-- **Plenty of RAM**: Handles multiple educational resources simultaneously  
-- **Fast storage**: Quick access to your learning materials
+- **High-performance GPU**: Perfect for running AI models locally
 - **Always available**: Your gaming setup becomes a 24/7 study companion
 
 ## 📋 Before You Start
