@@ -43,7 +43,7 @@ This is an **open source project** and we welcome your contributions for:
 
 **Customize Your Learning**: You can modify the context files (`eng.md`, `math.md`, `phy.md`, `chem.md`, `bio.md`) to help and support your specific learning needs with NVIDIA G-Assist!
 
-## 🎮 Why Use Your Gaming PC for Learning?
+## 🎮 Transform your Gaming PC into local AI Learning Assistant by NVIDIA G-Assist Plugins ✍️
 Your gaming PC has powerful hardware that's perfect for AI-assisted learning:
 - **High-performance GPU**: Perfect for running AI models locally
 - **Always available**: Your gaming setup becomes a 24/7 study companion
