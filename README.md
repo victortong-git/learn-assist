@@ -47,6 +47,7 @@ This is an **open source project** and we welcome your contributions for:
 Your gaming PC has powerful hardware that's perfect for AI-assisted learning:
 - **High-performance GPU**: Perfect for running AI models locally
 - **Always available**: Your gaming setup becomes a 24/7 study companion
+- **Local AI**: You can use your local AI for unlimited and private learning and study chats 
 
 ## 📋 Before You Start
 Make sure you have:
