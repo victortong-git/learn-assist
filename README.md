@@ -61,7 +61,8 @@ Make sure you have:
 This plugin has been tested and verified on:
 - **OS:** Windows 10
 - **GPU:** NVIDIA GeForce RTX 5080
-- **G-Assist:** from NVIDIA
+- **G-Assist:** 0.1.13
+- **Python:** 3.12
 
 ## 🚀 Quickstart
 
