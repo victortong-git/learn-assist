@@ -53,7 +53,7 @@ Your gaming PC has powerful hardware that's perfect for AI-assisted learning:
 ## 📋 Before You Start
 Make sure you have:
 - 🖥️ Windows PC (gaming PC recommended!)
-- 🐍 Python 3.6 or higher installed
+- 🐍 Python 3.12
 - 🤖 NVIDIA G-Assist installed
 - 📁 Basic understanding of markdown files
 
@@ -61,7 +61,7 @@ Make sure you have:
 This plugin has been tested and verified on:
 - **OS:** Windows 10
 - **GPU:** NVIDIA GeForce RTX 5080
-- **G-Assist:** Latest version from NVIDIA
+- **G-Assist:** from NVIDIA
 
 ## 🚀 Quickstart
 
