@@ -11,10 +11,37 @@ Learn more about NVIDIA G-Assist [here](https://github.com/NVIDIA/G-Assist).
 - 📝 Easy-to-update content system using simple markdown files
 - 💡 Smart question answering using subject-specific educational context
 
-## Open Source Project Information
+## 🔬 About This Project
+
+### Context Engineering Approach for Learning
+This LearnAssist plugin uses **context engineering** to transform NVIDIA G-Assist into a learning assistant. Instead of relying solely on the base language model's knowledge, it provides G-Assist with focused educational content from local markdown files, enabling more accurate and relevant educational responses.
+
+### Proof of Concept (POC) Build
+**Important:** This is currently a **Proof of Concept build** with the following limitations:
+- ⚠️ **Cannot process lengthy or complex questions** - Works best with direct, specific questions
+- ⚠️ **Limited to basic educational concepts** - Advanced topics may not be fully covered
+- ⚠️ **Simple keyword matching** - More sophisticated question understanding coming in future versions
+
+### Open Source Development
 This learnassist plugin is an **open source project** developed for the **NVIDIA G-Assist Plugins Hackathon competition**. It was built using the weather plugin example as a reference to demonstrate how gaming PCs can be transformed into powerful educational tools.
 
-The plugin uses a context engineering approach to help G-Assist's Small Language Model provide better learning results, proving that gaming hardware can effectively support students in their academic pursuits.
+### Future Development
+More complex and powerful functions will be added in **future hackathons and development cycles**. This project serves as a foundation for:
+- Advanced natural language processing
+- Multi-step problem solving
+- Interactive learning sessions
+- Expanded subject coverage
+- Integration with external educational APIs
+
+### 🤝 Contributions Welcome!
+This is an **open source project** and we welcome your contributions for:
+- **Context Enhancement**: Add or improve educational content in markdown files
+- **Feature Development**: Implement new learning assistant capabilities  
+- **Subject Expansion**: Add new subjects and educational domains
+- **Bug Fixes**: Help improve reliability and performance
+- **Documentation**: Enhance setup guides and usage examples
+
+**Customize Your Learning**: You can modify the context files (`eng.md`, `math.md`, `phy.md`, `chem.md`, `bio.md`) to help and support your specific learning needs with NVIDIA G-Assist!
 
 ## 🎮 Why Use Your Gaming PC for Learning?
 Your gaming PC has powerful hardware that's perfect for AI-assisted learning:
@@ -29,6 +56,12 @@ Make sure you have:
 - 🐍 Python 3.6 or higher installed
 - 🤖 NVIDIA G-Assist installed
 - 📁 Basic understanding of markdown files
+
+## ✅ Tested Environment
+This plugin has been tested and verified on:
+- **OS:** Windows 10
+- **GPU:** NVIDIA GeForce RTX 5080
+- **G-Assist:** Latest version from NVIDIA
 
 ## 🚀 Quickstart
 
@@ -52,16 +85,28 @@ build.bat
 This creates the executable and prepares all necessary files for installation.
 
 ### 📦 Step 3: Install the Plugin
+
+**Option A: Automatic Installation (Recommended)**
+Run the deployment script with administrator privileges:
+```cmd
+deploy.bat
+```
+This will automatically remove any old plugin files and copy the new build to the G-Assist plugins directory.
+
+**Option B: Manual Installation**
 1. Navigate to the `dist` folder created by the build script
 2. Copy the `learnassist` folder to:
 ```cmd
 %PROGRAMDATA%\NVIDIA Corporation\nvtopps\rise\plugins
 ```
 
-💡 **Tip**: Make sure all files are copied, including:
-- The executable (`learnassist-plugin.exe`)
-- `manifest.json`
-- All subject markdown files (`.md` files)
+💡 **Important Notes:**
+- **Administrator privileges required** for both installation methods
+- Make sure G-Assist is **not running** during installation
+- All files must be copied, including:
+  - The executable (`learnassist-plugin.exe`)
+  - `manifest.json`
+  - All subject markdown files (`.md` files)
 
 ## 📚 How to Use
 
@@ -77,6 +122,8 @@ The plugin comes with pre-loaded educational content for:
 - **phy** (or physics) - Mechanics, electricity, thermodynamics
 - **chem** (or chemistry) - Atomic structure, chemical reactions, organic chemistry
 - **bio** (or biology) - Cell biology, genetics, ecology
+
+💡 **Note**: Content is stored in markdown files with short names (`eng.md`, `math.md`, `phy.md`, `chem.md`, `bio.md`), but you can use either short or long subject names in your commands.
 
 ### 💬 Example Commands
 Try these commands with G-Assist using `/learnassist [subject] [question]` format:
@@ -105,6 +152,13 @@ Try these commands with G-Assist using `/learnassist [subject] [question]` forma
 - `/learnassist bio what is cell?`
 - `/learnassist bio what is photosynthesis?`
 - `/learnassist bio what is respiration?`
+
+### 📸 Biology Example in Action
+Here's a real example of LearnAssist helping with biology questions:
+
+![Biology Example](example1.jpg)
+
+*Example showing LearnAssist providing focused answers about biological concepts using G-Assist.*
 
 ### 📋 Example Response
 When you ask a question like `/learnassist eng what is noun?`, the plugin will:
@@ -154,9 +208,11 @@ The plugin logs all activity to:
 Check this file for detailed error messages and debugging information.
 
 ### ❗ Common Issues
-- **"Subject not found"**: Make sure the markdown file exists and is named correctly
-- **"Empty content"**: Check that your markdown file has content
+- **"Educational content for subject 'X' not found"**: Make sure the markdown file exists with correct name (eng.md, math.md, phy.md, chem.md, bio.md)
+- **"Educational content for subject 'X' is empty"**: Check that your markdown file has content
+- **"Both 'subject' and 'question' parameters are required"**: Ensure you're providing both subject and question in your command
 - **Plugin not responding**: Verify the plugin is properly installed in the G-Assist plugins directory
+- **Available subjects reminder**: Plugin will respond with "Available subjects: eng/english, math, phy/physics, chem/chemistry, bio/biology" when subject is not found
 
 ### 🧪 Testing Your Setup
 Use the provided test file:
@@ -168,7 +224,13 @@ This contains instructions for manually testing your plugin functionality.
 ## 👨‍💻 Developer Documentation
 
 ### 🏗️ Plugin Architecture
-The learnassist plugin is built as a Python-based G-Assist plugin that processes educational questions and returns focused answers. Similar to how weather plugins process weather data or stock plugins process market data, learnassist processes educational content from local markdown files to provide targeted learning assistance.
+The learnassist plugin is built as a Python-based G-Assist plugin that processes educational questions and returns focused answers directly to G-Assist. Similar to how weather plugins process weather data or stock plugins process market data, learnassist processes educational content from local markdown files using keyword matching and content extraction to provide targeted learning assistance.
+
+**Key Processing Flow:**
+1. **Subject Mapping**: Maps both short (eng, phy, chem, bio) and long names (english, physics, chemistry, biology) to correct markdown files
+2. **Keyword Matching**: Uses a comprehensive topic keyword system to identify what the student is asking about
+3. **Content Extraction**: Extracts relevant sections from markdown files based on matched topics
+4. **Focused Response**: Returns targeted educational answers directly to G-Assist (not context prompts)
 
 ### 🔧 Core Components
 
@@ -178,30 +240,83 @@ The learnassist plugin is built as a Python-based G-Assist plugin that processes
 - Uses Windows API for secure pipe communication
 
 #### Educational Question Processing
-- `get_learning_context()`: Main function that processes educational questions
-- `process_educational_question()`: Analyzes student questions and extracts relevant answers
-- `extract_topic_info()`: Extracts focused information from educational content
+- `get_learning_context()`: Main function that processes educational questions and handles subject mapping
+- `process_educational_question()`: Analyzes student questions using keyword matching to identify topics
+- `extract_topic_info()`: Extracts focused information from educational content based on matched keywords
+- **Subject Mapping System**: Maps both short and long subject names to markdown files (eng/english → eng.md)
+- **Keyword Matching**: Recognizes topics like adjective, noun, verb, atom, force, energy, fraction, algebra, etc.
 - Returns direct educational answers like other G-Assist plugins
+
+### 🔍 Supported Topics and Keywords
+
+The plugin uses intelligent keyword matching to identify what students are asking about:
+
+**English/Grammar Topics:**
+- **Adjectives**: adj, adjective, adjectives
+- **Nouns**: noun, nouns  
+- **Verbs**: verb, verbs
+- **Adverbs**: adverb, adverbs
+- **Tenses**: tense, tenses
+- **Grammar**: grammar, punctuation
+
+**Science Topics:**
+- **Biology**: photosynthesis, respiration, cellular respiration, cell, cells
+- **Chemistry**: atom, atomic, atoms, element, elements
+- **Physics**: force, forces, newton, law, energy, kinetic, potential, motion, velocity, acceleration
+
+**Math Topics:**
+- **Fractions**: fraction, fractions
+- **Algebra**: algebra, equation, solve
+- **Geometry**: geometry, triangle, circle, area
+
+### 📂 Subject File Mapping
+
+The plugin maps subject names to markdown files as follows:
+- `eng` or `english` → `eng.md`
+- `math` or `mathematics` → `math.md`  
+- `phy` or `physics` → `phy.md`
+- `chem` or `chemistry` → `chem.md`
+- `bio` or `biology` → `bio.md`
+
+### ⚙️ Content Extraction Process
+
+The plugin uses a sophisticated extraction algorithm to provide focused answers:
+
+1. **Question Analysis**: Converts student question to lowercase and searches for topic keywords
+2. **Topic Identification**: Matches keywords against the comprehensive topic dictionary
+3. **Content Scanning**: Scans the appropriate markdown file for sections containing the identified keywords
+4. **Smart Extraction**: 
+   - Starts capturing when topic keywords are found
+   - Continues until another major section (##) or different topic is encountered
+   - Stops when sufficient content (6-10 lines) is captured
+   - Formats the result by removing excessive blank lines
+5. **Fallback Response**: If no specific topic is found, provides subject-specific helpful suggestions
+
+**Extraction Features:**
+- Captures relevant headings, bullet points, and examples
+- Maintains markdown formatting for clear presentation
+- Limits content length to avoid overwhelming responses
+- Handles multiple sections within the same topic area
 
 ### 📋 Available Commands
 
 #### `initialize`
 Initializes the plugin and sets up the environment.
 - No parameters required
-- Returns: `{"success": true, "message": "Learn Assist Plugin initialized"}`
+- Returns: `{"success": true, "message": "Plugin initialized"}`
 
 #### `shutdown`
 Gracefully terminates the plugin.
 - No parameters required
-- Returns: `{"success": true, "message": "Learn Assist Plugin shutdown"}`
+- Returns: `{"success": true, "message": "Plugin shutdown"}`
 
 #### `get_learning_context`
-Processes educational questions and returns focused answers from educational content.
+Provides educational context from local markdown files to enhance AI responses for student learning assistance.
 - Parameters:
   ```json
   {
-    "subject": "string",  // Required: Subject (eng/english, math, phy/physics, chem/chemistry, bio/biology)
-    "question": "string"  // Required: Student's question (e.g., "what is noun?")
+    "subject": "string",  // Required: The subject prefix (e.g., 'english', 'math', 'physics', 'chemistry', 'biology') to load the corresponding markdown file
+    "question": "string"  // Required: The student's question that needs to be answered using the educational context
   }
   ```
 - Returns:

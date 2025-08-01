@@ -102,8 +102,22 @@ def process_educational_question(question: str, content: str, subject: str) -> s
             if answer:
                 return answer
     
-    # If no specific topic found, provide a general helpful response
-    return f"I can help with {subject} topics. Try asking about specific concepts like nouns, verbs, fractions, forces, or atoms."
+    # If no specific topic found, provide a subject-specific helpful response
+    subject_examples = {
+        'eng': 'nouns, verbs, adjectives, adverbs, tenses',
+        'english': 'nouns, verbs, adjectives, adverbs, tenses',
+        'math': 'fractions, algebra, geometry, equations',
+        'mathematics': 'fractions, algebra, geometry, equations',
+        'phy': 'forces, energy, motion, newton laws',
+        'physics': 'forces, energy, motion, newton laws',
+        'chem': 'atoms, elements, molecules, reactions',
+        'chemistry': 'atoms, elements, molecules, reactions',
+        'bio': 'cells, photosynthesis, respiration, genetics',
+        'biology': 'cells, photosynthesis, respiration, genetics'
+    }
+    
+    examples = subject_examples.get(subject.lower(), 'specific concepts')
+    return f"I can help with {subject} topics. Try asking about specific concepts like {examples}."
 
 def extract_topic_info(content: str, topic: str, keywords: list) -> str:
     """
